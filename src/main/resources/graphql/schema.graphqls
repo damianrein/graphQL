@@ -1,0 +1,47 @@
+type Query {
+	libroById(id: ID): Libro
+	findAllLibros : [Libro]
+	
+	autorById(id: ID): Autor
+	findAllAutor : [Autor]
+ }
+ 
+ type Mutation {
+ 	createLibro(libroInput: InputLibro) : String
+ 	deleteLibroById(id: ID) : String
+ 	
+ 	createAutor(autorInput: InputAutor) : String
+ 	deleteAutorById(id: ID) : String
+ }
+
+type Libro {
+	id: ID
+	nombre: String
+	paginas: Int
+	genero: String
+	precio: Float
+	autor: Autor
+ }
+ 
+type Autor {
+	id: ID
+	nombre: String
+	apellido: String
+	publicaciones: Int
+}
+
+input InputLibro {
+	id: ID
+	nombre: String
+	paginas: Int
+	genero: String
+	precio: Float
+	autor_id: Int!
+}
+
+input InputAutor {
+	id: ID
+	nombre: String
+	apellido: String
+	publicaciones: Int
+}
